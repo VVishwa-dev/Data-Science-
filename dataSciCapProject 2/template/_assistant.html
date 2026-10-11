@@ -1,0 +1,10 @@
+<div class="assistant-widget" id="assistant-widget">
+	<button class="assistant-launcher" id="assistant-launcher" type="button" aria-expanded="false" aria-controls="assistant-panel"><span class="assistant-launch-spark" aria-hidden="true">✳</span><span>Ask Clearpath</span><span class="assistant-ping" aria-hidden="true"></span></button>
+	<section class="assistant-panel" id="assistant-panel" aria-label="Clearpath loan assistant" hidden>
+		<header class="assistant-header"><span class="assistant-avatar" aria-hidden="true">c.</span><span><strong>Your loan sidekick</strong><small>Answers from the numbers in your plan</small></span><button class="assistant-close" id="assistant-close" type="button" aria-label="Close assistant">×</button></header>
+		<div class="assistant-messages" id="assistant-messages" aria-live="polite"><div class="assistant-message assistant-message-bot">I can compare your loans, estimate this month’s interest, or check a proposed payment against your budget. What’s on your mind?</div></div>
+		<div class="assistant-prompts"><button type="button" data-assistant-prompt="Analyze my month and summarize my whole plan.">Analyze my month</button><button type="button" data-assistant-prompt="Which loan should I look at preclosing first?">Which loan first?</button><button type="button" data-assistant-prompt="Show the pace on my savings goals.">Goal pace</button></div>
+		<form class="assistant-form" id="assistant-form"><label class="visually-hidden" for="assistant-question">Ask about your loan plan</label><input id="assistant-question" name="question" type="text" maxlength="300" placeholder="Ask about your loans…" autocomplete="off" required><button type="submit" aria-label="Send question">↑</button></form>
+		<p class="assistant-disclaimer">Helpful estimates, not financial advice.</p>
+	</section>
+</div>

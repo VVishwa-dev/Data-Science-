@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#251331"><meta name="csrf-token" content="{{ csrf_token }}">
+	<title>Log in | Clearpath</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"><script src="{{ url_for('static', filename='js/clearpath.js') }}" defer></script>
+</head>
+<body class="auth-body" data-page="login" data-authenticated="false">
+	<a class="skip-link" href="#main">Skip to content</a>
+	{% include "_header.html" %}
+	<main id="main" class="auth-layout">
+		<section class="auth-photo"><div class="auth-photo-image"></div><div class="auth-photo-shade"></div><div class="auth-photo-copy"><span class="eyebrow"><span class="eyebrow-dot"></span> A PLAN THAT'S YOURS</span><p>Make space for<br><em>the next thing.</em></p><span class="auth-photo-foot">YOUR LIFE, IN THE FULL PICTURE</span></div></section>
+		<section class="auth-form-wrap"><div class="auth-form-content"><a class="back-home" href="{{ url_for('home') }}">← Back to home</a><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> WELCOME BACK</p><h1>Good to see<br><em>you again.</em></h1><p class="auth-description">Log in to pick up where your plan left off.</p>
+			{% if error %}<div class="auth-error" role="alert">{{ error }}</div>{% endif %}
+			<form class="auth-form" method="post" action="{{ url_for('login') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><input type="hidden" name="next" value="{{ next_url }}"><label class="field" for="email"><span>Email address</span><input class="plain-input" id="email" name="email" type="email" autocomplete="email" maxlength="254" required></label><label class="field" for="password"><span>Password</span><input class="plain-input" id="password" name="password" type="password" autocomplete="current-password" required></label><button class="button button-dark click-action" type="submit">Log in to Clearpath <span aria-hidden="true">↗</span></button></form>
+			<p class="auth-switch">New to Clearpath? <a href="{{ url_for('signup') }}">Create your account <span aria-hidden="true">↗</span></a></p><p class="auth-private">Your plan is private to your account on this server.</p>
+		</div></section>
+	</main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<header class="site-header">
+	<a class="brand" href="{{ url_for('home') }}" aria-label="Clearpath home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>clearpath<span class="brand-period">.</span></span></a>
+	<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open menu"><span></span><span></span></button>
+	<nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+		<a class="nav-link" data-page-link="home" href="{{ url_for('home') }}">Home</a>
+		<a class="nav-link" data-page-link="dashboard" href="{{ url_for('dashboard') }}">Dashboard</a>
+		<a class="nav-link" data-page-link="analyzer" href="{{ url_for('analyzer') }}">Analyzer</a>
+		<a class="nav-link" data-page-link="tracker" href="{{ url_for('tracker') }}">Tracker</a>
+		<a class="nav-link" data-page-link="visualizations" href="{{ url_for('visualizations') }}">Data lab</a>
+		<a class="nav-link" data-page-link="about" href="{{ url_for('about') }}">About</a>
+	</nav>
+	<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">☾</button>
+	{% if current_user %}
+	<div class="account-tools"><a class="account-chip" href="{{ url_for('dashboard') }}" title="Signed in as {{ current_user['email'] }}"><span class="account-avatar">{{ current_user['name'][:1]|upper }}</span><span class="account-name">{{ current_user['name'].split()[0] }}</span></a><form action="{{ url_for('logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="logout-button" type="submit" aria-label="Log out" title="Log out">↗</button></form></div>
+	{% else %}
+	<div class="account-tools guest-tools"><a class="login-link" href="{{ url_for('login') }}">Log in</a><a class="nav-cta" href="{{ url_for('signup') }}">Create account <span aria-hidden="true">↗</span></a></div>
+	{% endif %}
+</header>

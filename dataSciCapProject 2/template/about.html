@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#251331">
+	<meta name="csrf-token" content="{{ csrf_token }}">
+	<meta name="description" content="How Clearpath compares loan payoff possibilities, and what to confirm before you decide.">
+	<title>About | Clearpath</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"><script src="{{ url_for('static', filename='js/clearpath.js') }}" defer></script>
+</head>
+<body data-page="about" data-authenticated="{{ 'true' if current_user else 'false' }}">
+	<a class="skip-link" href="#main">Skip to content</a>
+	{% include "_header.html" %}
+	<main id="main" class="about-page">
+		<section class="about-hero"><div class="about-image" role="img" aria-label="A close-up circuit board traced with violet light"></div><div class="about-shade"></div><div class="about-hero-copy" data-reveal><p class="eyebrow"><span class="eyebrow-dot"></span> A TOOL FOR THE IN-BETWEEN</p><h1>Not a magic answer.<br><em>A more useful question.</em></h1><p>What could paying off a loan early mean for the rest of your life?</p></div><span class="about-index" aria-hidden="true">THE CLEARPATH IDEA · 01</span></section>
+		<section class="about-statement page-wrap" data-reveal><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> WHY CLEARPATH EXISTS</p><h2>Money decisions feel lighter when you can <em>see the whole shape.</em></h2><p>Clearpath brings your loans, monthly commitments, and household picture together. It gives you a place to compare possibilities and ask better questions before you speak with your lender.</p></section>
+		<section class="method-section"><div class="method-heading" data-reveal><p class="eyebrow"><span class="eyebrow-dot"></span> THE MATH, IN PLAIN LANGUAGE</p><h2>Transparent by<br><em>design.</em></h2></div><div class="method-steps"><article data-reveal><span>01</span><h3>Start with your own numbers</h3><p>Your monthly income and living expenses show what is left after the loan EMIs you entered.</p></article><article data-reveal><span>02</span><h3>Compare two totals</h3><p>For each loan, we compare its remaining scheduled EMIs with its outstanding balance plus estimated closure charges.</p></article><article data-reveal><span>03</span><h3>Use the ranking as a prompt</h3><p>Loans with the largest positive difference appear first. A negative difference means the entered payoff cost is higher than the remaining EMIs.</p></article></div></section>
+		<section class="limits-section page-wrap"><div data-reveal><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> IMPORTANT CONTEXT</p><h2>A clearer estimate<br><em>is still an estimate.</em></h2></div><div class="limits-copy" data-reveal><p>This planner uses simple arithmetic. It does not model amortization schedules, daily interest accrual, tax treatment, foreclosure rules, opportunity cost, or lender-specific settlement terms. Its ranking is not a trained ML prediction, personal financial advice, or an instruction to close a loan.</p><p>Before taking action, ask each lender for a current settlement quote, confirm any fees and conditions, and make sure you keep a suitable emergency reserve.</p></div></section>
+		<section class="about-cta"><p>Ready to see your plan <em>take shape?</em></p><a class="button button-lime click-action" href="{{ url_for('analyzer') }}">Open the analyzer <span aria-hidden="true">↗</span></a></section>
+	</main>
+	{% if current_user %}{% include "_assistant.html" %}{% endif %}
+	<footer class="site-footer"><a class="brand brand-footer" href="{{ url_for('home') }}"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>clearpath<span class="brand-period">.</span></span></a><span>Illustrative planning, built around your life.</span><span>© <span class="current-year">2026</span> Clearpath</span></footer>
+</body>
+</html>

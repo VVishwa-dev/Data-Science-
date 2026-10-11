@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#251331">
+	<meta name="csrf-token" content="{{ csrf_token }}">
+	<meta name="description" content="A clearer, more human way to plan your loans and decide what to prioritize next.">
+	<title>Clearpath | Your loans, in a better light</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='js/clearpath.js') }}" defer></script>
+</head>
+<body data-page="home" data-authenticated="{{ 'true' if current_user else 'false' }}">
+	<a class="skip-link" href="#main">Skip to content</a>
+	{% include "_header.html" %}
+	<main id="main">
+		<section class="home-hero" aria-labelledby="hero-title">
+			<div class="home-hero-image" role="img" aria-label="A luminous digital Earth connected by a global data network"></div>
+			<div class="home-hero-shade"></div>
+			<div class="hero-orbit orbit-one" aria-hidden="true"></div><div class="hero-orbit orbit-two" aria-hidden="true"></div>
+			<div class="home-hero-content">
+				<p class="eyebrow"><span class="eyebrow-dot"></span> PERSONAL FINANCE · SCENARIO ENGINE</p>
+				<h1 id="hero-title">Find the signal.<br>Model <span class="rotating-word" id="rotating-word">your next move.</span></h1>
+				<p class="hero-copy">Bring rates, balances, and monthly cash flow into one model. Compare payoff paths before you make a move.</p>
+				<div class="hero-actions"><a class="button button-lime click-action" href="{{ url_for('analyzer') }}">{{ 'Update your model' if current_user else 'Build your loan model' }} <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="{{ url_for('dashboard') }}">Explore the numbers <span aria-hidden="true">↓</span></a></div>
+			</div>
+			<a class="hero-float" href="{{ url_for('dashboard') }}" aria-label="Open your payoff plan"><span class="float-spark" aria-hidden="true">✳</span><span><small>LIVE VARIABLES</small><strong>Cash flow, mapped</strong><em>Rates, EMIs &amp; payoff order <b aria-hidden="true">↗</b></em></span></a>
+			<div class="hero-progress" aria-hidden="true"><span></span><span></span><span></span><small>ONE PLAN, EVERY LOAN</small></div>
+		</section>
+
+		<section class="home-overview page-wrap" aria-labelledby="overview-title">
+			<div class="section-intro" data-reveal><div><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> YOUR PORTFOLIO AT A GLANCE</p><h2 id="overview-title">Every variable.<br><em>In one model.</em></h2></div><a class="plain-link" href="{{ url_for('dashboard') }}">Open your dashboard <span aria-hidden="true">↗</span></a></div>
+			<div class="home-metrics">
+				<article class="home-metric metric-dark" data-reveal><span>LOANS IN YOUR PLAN</span><strong id="home-loan-count">3</strong><small>One place to see them all</small><i aria-hidden="true">01</i></article>
+				<article class="home-metric metric-yellow" data-reveal><span>MONTHLY INCOME</span><strong id="home-income">₹1,80,000</strong><small>Set your real take-home income</small><i aria-hidden="true">02</i></article>
+				<article class="home-metric metric-coral" data-reveal><span>MONTHLY ROOM TO BREATHE</span><strong id="home-surplus">₹43,000</strong><small>After expenses and all EMIs</small><i aria-hidden="true">03</i></article>
+			</div>
+		</section>
+
+		<section class="home-next">
+			<div class="next-image" role="img" aria-label="Violet-lit glass towers against a modern city skyline"></div>
+			<div class="next-copy" data-reveal><p class="eyebrow"><span class="eyebrow-dot"></span> CHANGE A VARIABLE. SEE THE MODEL MOVE.</p><h2>Read the equation.<br><em>Then choose a path.</em></h2><p>Compare remaining EMIs with each balance and closure fee. See how income, expenses, and every monthly commitment shape the result.</p><a class="button button-lime click-action" href="{{ url_for('analyzer') }}">{{ 'Update your model' if current_user else 'Add your first loan' }} <span aria-hidden="true">↗</span></a><small class="demo-caption">{{ 'Your plan is private to your account.' if current_user else 'Example view · create an account to save your own model.' }}</small></div>
+		</section>
+
+		<section class="home-steps page-wrap" aria-labelledby="steps-title"><div class="section-intro" data-reveal><div><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> THE MODEL, STEP BY STEP</p><h2 id="steps-title">From raw numbers<br><em>to clear signals.</em></h2></div><a class="plain-link" href="{{ url_for('about') }}">Read the methodology <span aria-hidden="true">↗</span></a></div><div class="step-row"><article data-reveal><span>01</span><h3>Capture every variable</h3><p>Record loan balances, rates, fees, income sources, and monthly spending.</p></article><article data-reveal><span>02</span><h3>Compare each scenario</h3><p>Put scheduled repayments beside today's balance plus closure charges.</p></article><article data-reveal><span>03</span><h3>Prioritize with context</h3><p>Follow the largest positive difference as a prompt, then verify with your lender.</p></article></div></section>
+		<section class="closing-band"><span class="closing-mark" aria-hidden="true">c.</span><p>Your money. Your pace.<br><em>A more considered plan.</em></p><a class="closing-link" href="{{ url_for('dashboard') }}" aria-label="Open the dashboard">↗</a></section>
+	</main>
+	{% if current_user %}{% include "_assistant.html" %}{% endif %}
+	<footer class="site-footer"><a class="brand brand-footer" href="{{ url_for('home') }}"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>clearpath<span class="brand-period">.</span></span></a><span>Illustrative planning, built around your life.</span><span>© <span class="current-year">2026</span> Clearpath</span></footer>
+</body>
+</html>
